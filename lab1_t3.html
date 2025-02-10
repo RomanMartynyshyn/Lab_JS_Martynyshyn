@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// 3.2
+function isPalindromeArray(arr) {
+    return arr.join('') === arr.slice().reverse().join('');
+}
+
+function isPalindromeArray(arr) {
+    let length = arr.length;
+
+    for (let i = 0; i < Math.floor(length / 2); i++) {
+        if (arr[i] !== arr[length - 1 - i]) {
+            return false; 
+        }
+    }
+
+    return true;
+}
+console.log(isPalindromeArray([1, 2, 3, 2, 1]));
+console.log(isPalindromeArray([1, 2, 3, 4, 5]));
+console.log(isPalindromeArray(['a', 'b', 'c', 'b', 'a']));
+console.log(isPalindromeArray(['a', 'b', 'c', 'd']));
+    </script>
+</body>
+<p>open console.</p>
+<br>
+<p>press: f12</p>
+</html>

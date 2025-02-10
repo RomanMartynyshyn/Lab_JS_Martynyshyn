@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// 4.2
+function isNumPalindrome(num) {
+    let str = num.toString();
+    return str === str.split('').reverse().join('');
+}
+
+function isPalindromeArray(arr) {
+    let len = arr.length;
+
+    for( let i=0; i<Math.floor(len /2); i++){
+        if (arr[i] !== arr[len -1 -i]){
+            return false;
+        }
+    }
+    return arr.every(isNumPalindrome);
+}
+console.log(isPalindromeArray([121, 22, 3, 22, 121]));
+console.log(isPalindromeArray([123, 22, 3, 22, 321])); 
+console.log(isPalindromeArray([1, 44, 5, 44, 1])); 
+console.log(isPalindromeArray([11, 22, 33, 44, 55])); 
+
+    </script>
+</body>
+<p>open console.</p>
+<br>
+<p>press: f12</p>
+</html>

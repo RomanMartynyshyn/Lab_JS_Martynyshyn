@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// 5.2
+function fizzBuzzArray(arr) {
+    arr.forEach(num => {
+        if(num%3 === 0 && num%5 === 0){
+            console.log("fizzbuzz");
+        }
+        else if (num%3 === 0){
+            console.log("fizz");
+        }
+        else if (num%5 === 0){
+            console.log("buzz");
+        }
+        else{
+            console.log(num);
+        }
+    });
+}
+fizzBuzzArray([1, 3, 5, 15, 18, 20, 22, 30]);
+    </script>
+</body>
+<p>open console.</p>
+<br>
+<p>press: f12</p>
+</html>

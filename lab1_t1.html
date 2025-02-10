@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// 1.
+let auto = ["Volvo", "Audi"];
+console.log("t1.1:" + auto);
+
+// 2.
+let auto1 = ["Volvo", "Audi"];
+auto1.push("Toyota");
+console.log("t1.2:" + auto1);
+
+// 3.
+let auto2 = ["Volvo", "Audi", "Toyota", "lexus"];
+let c = auto2.length;
+if (c%2 == 0){
+auto2.splice(c/2, 0, "slavuta");
+}
+else if(c%2 != 0){
+    auto2.splice(c/2, 0, "Ford")
+}
+console.log("t1.3:" + auto2);
+
+// 4.
+let auto3 = ["Volvo", "Audi", "Toyota", "lexus"];
+let c1 = auto3.shift();
+console.log(c1);
+console.log("t1.4:" + auto3);
+
+// 5.
+let auto4 = ["Volvo", "Audi", "Toyota", "lexus"];
+auto4.unshift("BMW", "Nissan")
+console.log("t1.5:" + auto4)
+
+    </script>
+</body>
+<p>open console.</p>
+<br>
+<p>press: f12</p>
+</html>

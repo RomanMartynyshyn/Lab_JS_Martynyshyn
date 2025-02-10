@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 2.2
+function sumInput() {
+    let arr = [];
+    while (true) {
+        let userInput = prompt("Введіть число:");
+        if (userInput === null || userInput === '') {
+            break;
+        }
+
+        let num = Number(userInput);
+        if (isNaN(num)) {
+            break;
+        }
+
+        arr.push(num);
+    }
+
+    return arr.reduce((sum, current) => sum + current, 0);
+
+}
+console.log(sumInput());
+</script>
+</body>
+<p>open console.</p>
+<br>
+<p>press: f12</p>
+</html>
