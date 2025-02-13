@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // Місяці починаються з 0, тому додаємо 1
+        const day = String(today.getDate()).padStart(2, '0'); // Додаємо нуль на початок, якщо день менший за 10
+
+        const formattedDate = `${year}-${month}-${day}`;
+        console.log(formattedDate);
+    </script>
+</body>
+</html>

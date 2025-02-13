@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        document.write("task 7<br>")
+        const today = new Date();
+        const dayOfWeek = today.getDay(); // Отримуємо номер дня тижня (0-6)
+
+        console.log(dayOfWeek);
+        document.write(dayOfWeek);
+        document.write("<br>task 8<br>");
+
+        const daysOfWeek = [
+  'Неділя', 'Понеділок', 'Вівторок', 'Середа', 'Четвер', 'П’ятниця', 'Субота'
+];
+function todayDay(){
+    const today = new Date();
+        const dayOfWeek = today.getDay(); // Отримуємо номер дня тижня
+
+        console.log(daysOfWeek[dayOfWeek]); // Виводимо день тижня словами
+        document.write(daysOfWeek[dayOfWeek]);
+}
+todayDay();    
+    </script>
+</body>
+</html>
