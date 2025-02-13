@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+function daysUntilBirthday(birthDateStr) {
+    // Парсимо вхідну дату народження
+    const birthDate = new Date(Date.parse(birthDateStr));
+
+    if (isNaN(birthDate)) {
+        alert("Некоректний формат дати. Використовуйте формат 'YYYY-MM-DD'.");
+        return;
+    }
+
+    // Отримуємо поточну дату
+    const now = new Date();
+    
+    // Створюємо дату наступного дня народження в поточному році
+    let nextBirthday = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+
+    // Якщо день народження вже пройшов цього року, беремо наступний рік
+    if (nextBirthday < now) {
+        nextBirthday.setFullYear(now.getFullYear() + 1);
+    }
+
+    // Обчислюємо різницю в днях
+    const diffInMilliseconds = nextBirthday - now;
+    const daysLeft = Math.ceil(diffInMilliseconds / (1000 * 60 * 60 * 24));
+
+    alert(`До вашого дня народження залишилося ${daysLeft} днів!`);
+}
+
+// Запитуємо дату народження у користувача
+const birthDateStr = prompt("Введіть дату вашого народження у форматі 'YYYY-MM-DD':");
+
+// Викликаємо функцію після втрати фокусу (імітується завершення введення)
+if (birthDateStr) {
+    daysUntilBirthday(birthDateStr);
+}
+
+    </script>
+</body>
+</html>

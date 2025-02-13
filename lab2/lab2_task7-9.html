@@ -9,23 +9,88 @@
     <script>
         document.write("task 7<br>")
         const today = new Date();
-        const dayOfWeek = today.getDay(); // Отримуємо номер дня тижня (0-6)
+        const dayOfWeek = today.getDay(); 
 
         console.log(dayOfWeek);
         document.write(dayOfWeek);
-        document.write("<br>task 8<br>");
+        document.write("<br><br>task 8<br>");
 
         const daysOfWeek = [
   'Неділя', 'Понеділок', 'Вівторок', 'Середа', 'Четвер', 'П’ятниця', 'Субота'
 ];
 function todayDay(){
     const today = new Date();
-        const dayOfWeek = today.getDay(); // Отримуємо номер дня тижня
+        const dayOfWeek = today.getDay(); 
 
-        console.log(daysOfWeek[dayOfWeek]); // Виводимо день тижня словами
+        console.log(daysOfWeek[dayOfWeek]); 
         document.write(daysOfWeek[dayOfWeek]);
 }
-todayDay();    
-    </script>
+todayDay();
+document.write("<br><br>task 9")
+    
+function whatDay(){
+    const date = new Date(2015, 0, 7); 
+
+    const daysOfWeek = ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "П’ятниця", "Субота"];
+    const dayOfWeek = date.getDay();
+
+    console.log(`7 січня 2015 року було: ${daysOfWeek[dayOfWeek]}`);
+    document.write(`<br>7 січня 2015 року було: ${daysOfWeek[dayOfWeek]}`);
+}
+whatDay()
+document.write("<br><br>task 10<br>");
+
+function sec(){
+    const now = new Date().getTime();
+    const epoch = new Date(1970, 0, 1).getTime();
+
+    const diffInMilliseconds = now - epoch;
+    const diffInMinutes = Math.floor(diffInMilliseconds / (1000 * 60));
+
+    console.log(`Кількість хвилин з 1 січня 1970 року: ${diffInMinutes}`);
+    document.write(`Кількість хвилин з 1 січня 1970 року: ${diffInMinutes}`);
+}
+sec()
+
+document.write("<br><br>task 11<br>");
+
+function hours(){
+    const now = Date.now(); // Альтернативний варіант для Date.parse(new Date())
+
+    const pastDate = Date.parse("1988-03-01T00:00:00Z"); // UTC-час
+
+    const diffInMilliseconds = now - pastDate;
+    const diffInHours = Math.floor(diffInMilliseconds / (1000 * 60 * 60));
+
+    console.log(`Кількість годин з 1 березня 1988 року: ${diffInHours}`);
+    document.write(`Кількість годин з 1 березня 1988 року: ${diffInHours}`);
+}
+hours()
+
+document.write("<br><br>task 12<br>");
+function difference(){
+    const now = new Date();
+    const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0);
+    const diffInMilliseconds = now - startOfDay;
+    const diffInSeconds = Math.floor(diffInMilliseconds / 1000);
+
+    console.log(`Кількість секунд з початку дня: ${diffInSeconds}`);
+    document.write(`Кількість секунд з початку дня: ${diffInSeconds}`);
+}
+difference()
+
+document.write("<br><br>task 13<br>");
+function difference2(){
+        
+    const now = new Date();
+    const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
+    const diffInMilliseconds = endOfDay - now;
+    const diffInSeconds = Math.floor(diffInMilliseconds / 1000);
+
+    console.log(`Кількість секунд до кінця дня: ${diffInSeconds}`);
+    document.write(`Кількість секунд до кінця дня: ${diffInSeconds}`);
+}
+difference2()
+</script>
 </body>
 </html>
