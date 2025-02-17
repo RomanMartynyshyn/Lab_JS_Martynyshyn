@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = "JavaScript is awesome!";
+
+        // 1. Отримати перші 5 символів рядка
+        let firstFive = str.slice(0, 5);
+        console.log(firstFive);
+
+        // 2. Видалити перший і останній символ рядка
+        let withoutFirstLast = str.slice(1, -1);
+        console.log(withoutFirstLast);
+
+        // 3. Отримати останні 4 символи рядка
+        let lastFour = str.slice(-4);
+        console.log(lastFour);
+
+        // 4. Розділити рядок на дві частини: до першого пробілу та після
+        let firstSpaceIndex = str.indexOf(" ");
+        let beforeSpace = str.slice(0, firstSpaceIndex);
+        let afterSpace = str.slice(firstSpaceIndex + 1);
+        console.log(beforeSpace);
+        console.log(afterSpace);
+
+        // 5. Отримати все, крім перших 4 символів
+        let withoutFirstFour = str.slice(4);
+        console.log(withoutFirstFour);
+    </script>
+</body>
+</html>

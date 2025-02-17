@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function ucFirst(str){
+            if(!str) return str;
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+        console.log(ucFirst("hello"));
+        console.log(ucFirst(""));
+        console.log(ucFirst("привіт"));
+
+        function checkSpam(str){
+            if (!str) return false;
+            const spamwords = ["типу", "якби б це", "коротше", "таки", "ну", "ось", "взагалі-то", "значить"];
+            str = str.toLowerCase();
+
+            return spamwords.some(word => str.includes(word));
+        }
+        console.log(checkSpam("Це, типу, цікаво"));       
+        console.log(checkSpam("Взагалі-то, я не згоден"));
+        console.log(checkSpam("Значить, ось як буває")); 
+        console.log(checkSpam("Це нормальний текст")); 
+
+        function truncate(str, maxlength){
+            if (str.length > maxlength) {
+                return str.slice(0, maxlength-1) + "...";
+            }
+            else{
+                return str;
+            }
+        }
+        console.log(truncate("Це дуже довгий рядок", 10));
+        console.log(truncate("Короткий текст", 20));
+        console.log(truncate("Hello, world!", 5));
+    </script>
+</body>
+</html>

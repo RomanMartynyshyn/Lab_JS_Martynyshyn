@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function isAnagram(word1, word2) {
+            // Видаляємо пробіли, приводимо до нижнього регістру та сортуємо букви
+            let normalize = str => str.toLowerCase().replace(/\s/g, '').split('').sort().join('');
+            
+            return normalize(word1) === normalize(word2);
+        }
+
+        // Запитуємо у користувача два слова
+        let word1 = prompt("Введіть перше слово:");
+        let word2 = prompt("Введіть друге слово:");
+
+        // Виводимо результат
+        if (isAnagram(word1, word2)) {
+            console.log(`"${word1}" і "${word2}" є анаграмами!`);
+            document.write(`"${word1}" і "${word2}" є анаграмами!`);
+        } else {
+            console.log(`"${word1}" і "${word2}" не є анаграмами.`);
+            document.write(`"${word1}" і "${word2}" не є анаграмами.`);
+        }
+
+    </script>
+</body>
+</html>
