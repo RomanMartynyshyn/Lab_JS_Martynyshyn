@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Квадрат числа в абзаці</title>
+</head>
+<body>
+
+    <p>2</p>
+    <p>5</p>
+    <p>10</p>
+
+    <script>
+        document.querySelectorAll("p").forEach(p => {
+            p.addEventListener("click", function() {
+                let num = Number(this.textContent); // Отримуємо число з абзацу
+                if (!isNaN(num)) {
+                    this.textContent = num * num; // Замінюємо текст на його квадрат
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

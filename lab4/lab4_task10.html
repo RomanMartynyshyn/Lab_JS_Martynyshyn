@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кнопка, що зникає</title>
+</head>
+<body>
+
+    <button id="hideButton">Натисни, щоб зникнути</button>
+
+    <script>
+        document.getElementById("hideButton").addEventListener("click", function() {
+            this.style.display = "none"; // Приховуємо саму кнопку
+        });
+    </script>
+
+</body>
+</html>

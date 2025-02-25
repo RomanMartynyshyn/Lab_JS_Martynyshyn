@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Перевірка довжини input</title>
+    <style>
+        input {
+            border: 2px solid gray;
+            padding: 5px;
+            outline: none;
+        }
+        .valid {
+            border-color: green;
+        }
+        .invalid {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="text" data-length="5" placeholder="Введіть 5 символів">
+    <input type="text" data-length="8" placeholder="Введіть 8 символів">
+
+    <script>
+        document.querySelectorAll("input").forEach(input => {
+            input.addEventListener("blur", function() {
+                let expectedLength = Number(this.dataset.length); // Отримуємо необхідну довжину з data-length
+                if (this.value.length === expectedLength) {
+                    this.classList.add("valid");
+                    this.classList.remove("invalid");
+                } else {
+                    this.classList.add("invalid");
+                    this.classList.remove("valid");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Одноразовий Alert для input</title>
+</head>
+<body>
+
+    <input type="text" value="Перше поле">
+    <input type="text" value="Друге поле">
+    <input type="text" value="Третє поле">
+
+    <script>
+        document.querySelectorAll("input").forEach(input => {
+            function showAlert() {
+                alert(this.value);
+                this.removeEventListener("click", showAlert); // Видаляємо обробник після першого кліку
+            }
+            input.addEventListener("click", showAlert);
+        });
+    </script>
+
+</body>
+</html>
