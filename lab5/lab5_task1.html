@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заміна тексту абзаців</title>
+</head>
+<body>
+
+    <h2>Заголовок, не змінюється.</h2>
+    <p>Абзац 3</p>
+    <p>Абзац 2</p>
+    <p>Абзац 1</p>
+
+    <script>
+        // Отримуємо всі елементи <p> за допомогою getElementsByTagName
+            const paragraphs = document.getElementsByTagName('p');
+
+// Перебираємо всі абзаци та замінюємо їх текст на порядковий номер
+for (let i = 0; i < paragraphs.length; i++) {
+    paragraphs[i].textContent = `Абзац ${i + 1}`;
+}
+    </script>
+
+</body>
+</html>

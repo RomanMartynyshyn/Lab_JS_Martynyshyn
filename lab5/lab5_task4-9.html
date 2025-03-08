@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .my-class {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- task4 -->
+    <p id="paragraph"> При натисканні на кнопку текст в абзаці зміниться </p>
+    <button onclick="changeText()">кнопка</button>
+    <br>
+    
+    <!-- task5 -->
+    <h3>task 5</h3>
+    <p id="t5">При натисканні на кнопку абзац стане h3, але текст залишиться.</p>
+    <button onclick="changeElement()">зміна елементу</button>
+    
+    <!-- task6 -->
+    <h3>task 6</h3>
+    <p class="test"><a href="https://example.com/test1">Посилання 1</a></p>
+    <p class="test"><a href="https://example.com/test2">Посилання 2</a></p>
+    <p class="test"><a href="https://example.com/test3">Посилання 3</a></p>
+
+    <button onclick="showHref()">вивести посилання</button>
+    <div id="output"></div>
+    
+    <!-- task7 -->
+    <h3>task7</h3>
+    <p id="myParagraph" class="my-class">Цей текст червоний.</p>
+    <button onclick="removeClass()">Видалити клас</button>  
+
+    <!-- task8 -->
+    <h3>task 8</h3>
+    <img src="image1.jpg" alt="Зображення 1" class="image">
+    <img src="image2.jpg" alt="Зображення 2" class="image">
+    <img src="image3.jpg" alt="Зображення 3" class="image">
+
+    <button onclick="showImageSources()">Показати джерела</button>
+    <div id="output1"></div>
+
+    <!-- task9 -->
+    <img src="image1.jpg" alt="Зображення 1" class="image" onclick="showImageSource(this)">
+    <img src="image2.jpg" alt="Зображення 2" class="image" onclick="showImageSource(this)">
+    <img src="image3.jpg" alt="Зображення 3" class="image" onclick="showImageSource(this)">
+
+    <div id="output2"></div>
+</body>
+<script>
+    //task4
+    function changeText(){
+        document.getElementById("paragraph").innerHTML = "змінений текст";
+    }
+    //task 5
+    function changeElement(){
+        document.getElementById("t5").outerHTML = '<h3 id="t5">При натисканні на кнопку абзац стане h3, але текст залишиться.</h3>';
+    }
+    //task 6
+    function showHref(){
+        let tests = document.querySelectorAll(".test a");
+        let outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "";
+
+        tests.forEach(link => {
+                outputDiv.innerHTML += `<p>${link.getAttribute("href")}</p>`;
+            });
+    }
+    //task 7
+    function removeClass() {
+        document.getElementById("myParagraph").classList.remove("my-class");
+    }
+    //task8
+    function showImageSources() {
+        let images = document.querySelectorAll(".image"); // Отримуємо всі зображення
+        let outputDiv = document.getElementById("output1");
+        outputDiv.innerHTML = ""; // Очищаємо попередній вміст
+
+        images.forEach(img => {
+            outputDiv.innerHTML += `<p>${img.getAttribute("src")}</p>`; // Виводимо src
+        });
+    }
+    //task9
+    function showImageSource(img) {
+        let outputDiv = document.getElementById("output2");
+        outputDiv.innerHTML = `<p>Джерело: ${img.getAttribute("src")}</p>`;
+    }
+</script>
+</html>
