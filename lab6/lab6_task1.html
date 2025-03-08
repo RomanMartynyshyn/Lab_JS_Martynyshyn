@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- task1 -->
+    <h3>Task 1</h3>
+    <input type="text" id="textInput" ></input>
+    <button onclick="changeTextColor()">змінити колір</button>
+
+    <!-- task2 -->
+    <h3>Task 2</h3>
+    <input type="text" id="textInput1" value="Введіть текст тут">
+    <button onclick="disableInput()">🔒 Заблокувати</button>
+    <button onclick="enableInput()">🔓 Розблокувати</button>
+
+    <!-- task3 -->
+    <h3>Task 3</h3>
+    <img id="myImage" src="../lab4/photo/mitsu.jpg" alt="Перше зображення" width="300">
+    <button onclick="changeImage()">Змінити картинку</button>
+
+    <!-- task4 -->
+    <h3>Task 4</h3>
+    <img id="myImage1" src="../lab4/photo/mitsu.jpg" alt="Перше зображення" width="300"
+    onmouseover="changeImageOnHover()" onmouseout="restoreImage()">
+
+    <!-- task5 -->
+    <h3>Task 5</h3>
+    <button onclick="countClicks(this)">Кількість кліків: 0</button>
+</body>
+<script>
+    //task1
+    function changeTextColor(){
+        document.getElementById("textInput").style.color = "red";
+    }
+    //task2
+    function disableInput() {
+            document.getElementById("textInput1").setAttribute("disabled", "true");
+        }
+    //task3
+    function enableInput() {
+        document.getElementById("textInput1").removeAttribute("disabled");
+    }
+    function changeImage() {
+        let img = document.getElementById("myImage");
+        if (img.getAttribute("src") === "../lab4/photo/mitsu.jpg") {
+            img.setAttribute("src", "../lab4/photo/subaru.jpg");
+        } else {
+            img.setAttribute("src", "../lab4/photo/subaru.jpg");
+        }
+    }
+    //task4
+    function changeImageOnHover() {
+        document.getElementById("myImage1").setAttribute("src", "../lab4/photo/toyota.jpg");
+    }
+
+    function restoreImage() {
+        document.getElementById("myImage1").setAttribute("src", "../lab4/photo/mitsu.jpg");
+    }
+    //task5
+    function countClicks(button) {
+        let currentCount = parseInt(button.textContent.split(":")[1]) || 0;
+        currentCount++;
+        button.textContent = "Кількість кліків: " + currentCount;
+    }
+</script>
+</html>
