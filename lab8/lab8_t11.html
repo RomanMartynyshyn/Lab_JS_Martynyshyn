@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таблиця з сортуванням</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        button {
+            margin-left: 10px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<table id="dataTable">
+    <thead>
+        <tr>
+            <th>Ім’я <button onclick="sortTable(0)">Сортувати</button></th>
+            <th>Прізвище <button onclick="sortTable(1)">Сортувати</button></th>
+            <th>Вік <button onclick="sortTable(2)">Сортувати</button></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Сергій</td>
+            <td>Петренко</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>Юрій</td>
+            <td>Даниленко</td>
+            <td>15</td>
+        </tr>
+        <tr>
+            <td>Анна</td>
+            <td>Ткаченко</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>Марія</td>
+            <td>Іванова</td>
+            <td>20</td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    function sortTable(columnIndex) {
+        let table = document.getElementById("dataTable");
+        let rows = Array.from(table.rows).slice(1); // Отримуємо всі рядки (окрім заголовка)
+
+        let sortedRows = rows.sort((rowA, rowB) => {
+            let cellA = rowA.cells[columnIndex].textContent;
+            let cellB = rowB.cells[columnIndex].textContent;
+
+            // Якщо колонка містить числа, сортуємо як числа, інакше як текст
+            if (columnIndex === 2) { // Вік (колонка індексу 2)
+                return parseInt(cellA) - parseInt(cellB);
+            } else {
+                return cellA.localeCompare(cellB);
+            }
+        });
+
+        // Вставляємо відсортовані рядки назад у таблицю
+        for (let row of sortedRows) {
+            table.tBodies[0].appendChild(row);
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 10px;
+            display: inline-block;
+            width: 200px;
+            background-color: #f9f9f9;
+        }
+        .close-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button {
+            margin-top: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    
+    <button onclick="addCard()">Додати картку</button>
+
+    <div id="cardContainer"></div>
+
+    <script>
+        function addCard() {
+            let cardContainer = document.getElementById("cardContainer");
+
+            // Створення нової картки
+            let card = document.createElement("div");
+            card.classList.add("card");
+            card.textContent = "Це нова картка.";
+
+            // Створення кнопки "Закрити"
+            let closeButton = document.createElement("button");
+            closeButton.classList.add("close-button");
+            closeButton.textContent = "Закрити";
+
+            // Додавання функції для закриття картки
+            closeButton.onclick = function() {
+                card.remove();
+            };
+
+            // Додавання кнопки "Закрити" до картки
+            card.appendChild(closeButton);
+
+            // Додавання картки до контейнера
+            cardContainer.appendChild(card);
+        }
+    </script>
+
+</body>
+</html>

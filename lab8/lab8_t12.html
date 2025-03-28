@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма з прізвищами</title>
+    <style>
+        input {
+            margin: 5px;
+            padding: 5px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<form id="nameForm">
+    <div id="inputFields"></div>
+    <button type="submit">Відправити</button>
+</form>
+
+<script>
+    const article = [
+        "Качурівський В.",
+        "Калиній І.",
+        "Роман Б.",
+        "Ваше прізвище та ім’я"
+    ];
+
+    const inputContainer = document.getElementById("inputFields");
+
+    // Додаємо input поля для кожного елементу масиву article
+    article.forEach((name, index) => {
+        let input = document.createElement("input");
+        input.type = "text";
+        input.name = `name${index}`;
+        input.value = name;
+        input.placeholder = `Прізвище ${index + 1}`;
+
+        inputContainer.appendChild(input);
+        inputContainer.appendChild(document.createElement("br"));
+    });
+
+    // Відправка форми (для демонстрації)
+    document.getElementById("nameForm").onsubmit = function(event) {
+        event.preventDefault();
+        alert("Форма відправлена!");
+    };
+</script>
+
+</body>
+</html>

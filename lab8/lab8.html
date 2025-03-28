@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        
+        <h3 id="listTitle" style="display: none;">Мій список</h3>
+        <ul id="myList">
+            <li>first element</li>
+            <li>second element</li>
+            <li>third element</li>
+            
+        </ul>
+    </nav>
+    <button onclick="addItem()">Add element</button><br>
+    <button onclick="removeLastItem()">Remove last one</button><br>
+    <button onclick="clearList()">Очистити список</button><br>
+    <button onclick="addTitle()">Додати заголовок</button><br>
+    <button onclick="addItemToStart()">Додати на початок</button><br>
+    <input type="text" id="itemInput" placeholder="Введіть текст елемента">
+    <button onclick="addItemFromInput()">Додати</button>
+    <br><br>
+    <p id="myParagraph">Це текст абзацу.</p>
+    <button onclick="replaceParagraph()">Замінити</button>
+</body>
+<script>
+
+    function addItem(){
+        let ul = document.getElementById("myList");
+        let li = createListItem("Новий елемент");
+        ul.appendChild(li);
+    }
+
+    function removeLastItem() {
+        let ul = document.getElementById("myList");
+        if (ul.lastChild) {
+            ul.removeChild(ul.lastChild);
+        }
+    }
+
+    function clearList() {
+        let ul = document.getElementById("myList");
+        ul.innerHTML = "";
+    }
+
+    function addTitle() {
+        let title = document.getElementById("listTitle");
+        title.style.display = "block";
+    }
+
+    function addItemToStart() {
+        let ul = document.getElementById("myList");
+        let li = createListItem("Новий елемент");
+        ul.insertBefore(li, ul.firstChild);
+    }
+
+    function addItemFromInput() {
+        let input = document.getElementById("itemInput");
+        let text = input.value.trim();
+        if (text !== "") {
+            let ul = document.getElementById("myList");
+            let li = createListItem(text);
+            ul.appendChild(li);
+            input.value = "";
+        }
+    }
+
+    function createListItem(text) {
+            let li = document.createElement("li");
+            li.textContent = text;
+            
+            let deleteButton = document.createElement("button");
+            deleteButton.textContent = "Видалити";
+            deleteButton.style.marginLeft = "10px";
+            deleteButton.onclick = function () {
+                li.remove();
+            };
+            
+            let upButton = document.createElement("button");
+            upButton.textContent = "Вгору";
+            upButton.style.marginLeft = "10px";
+            upButton.onclick = function () {
+                let prev = li.previousElementSibling;
+                if (prev) {
+                    li.parentNode.insertBefore(li, prev);
+                }
+            };
+            
+            let downButton = document.createElement("button");
+            downButton.textContent = "Вниз";
+            downButton.style.marginLeft = "10px";
+            downButton.onclick = function () {
+                let next = li.nextElementSibling;
+                if (next) {
+                    li.parentNode.insertBefore(next, li);
+                }
+            };
+            
+            li.appendChild(upButton);
+            li.appendChild(downButton);
+            li.appendChild(deleteButton);
+            return li;
+        }
+
+        function replaceParagraph() {
+            let paragraph = document.getElementById("myParagraph");
+            let newElement = document.createElement("h2");
+            newElement.textContent = paragraph.textContent;
+            paragraph.replaceWith(newElement);
+        }
+</script>
+</html>
