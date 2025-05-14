@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Сторінка 1</title>
+</head>
+<body>
+  <h1>Це сторінка 1</h1>
+
+  <a href="page2.html">Перейти на сторінку 2</a>
+  <br><br>
+
+  <button onclick="history.go(-2)">Назад на 2 кроки</button>
+  <button onclick="history.back()">Назад</button>
+  <button onclick="history.forward()">Вперед</button>
+
+  <p id="historyLength"></p>
+
+  <script>
+    document.getElementById("historyLength").textContent = 
+      "Кількість записів в історії: " + history.length;
+  </script>
+</body>
+</html>

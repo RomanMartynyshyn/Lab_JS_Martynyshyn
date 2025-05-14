@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Визначення браузера та мови</title>
+</head>
+<body>
+  <h2 id="browserMessage"></h2>
+  <h3 id="greeting"></h3>
+
+  <script>
+    // Отримуємо User-Agent
+    const userAgent = navigator.userAgent.toLowerCase();
+
+    // Перевірка браузера
+    let browserMsg = "";
+    if (userAgent.includes("chrome") && !userAgent.includes("edg") && !userAgent.includes("opr")) {
+      browserMsg = "Ви використовуєте Google Chrome!";
+    } else if (userAgent.includes("firefox")) {
+      browserMsg = "Ви використовуєте Mozilla Firefox.";
+    } else if (userAgent.includes("safari") && !userAgent.includes("chrome")) {
+      browserMsg = "Ви використовуєте Safari.";
+    } else if (userAgent.includes("edg")) {
+      browserMsg = "Ви використовуєте Microsoft Edge.";
+    } else {
+      browserMsg = "Ваш браузер не визначено точно.";
+    }
+
+    document.getElementById("browserMessage").textContent = browserMsg;
+
+    // Привітання за мовою браузера
+    const lang = navigator.language || navigator.userLanguage;
+    let greeting = "";
+
+    if (lang.startsWith("uk")) {
+      greeting = "Привіт!";
+    } else if (lang.startsWith("en")) {
+      greeting = "Hello!";
+    } else if (lang.startsWith("de")) {
+      greeting = "Hallo!";
+    } else if (lang.startsWith("fr")) {
+      greeting = "Bonjour!";
+    } else {
+      greeting = "Вітаємо!";
+    }
+
+    document.getElementById("greeting").textContent = greeting;
+  </script>
+</body>
+</html>

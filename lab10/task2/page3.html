@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Сторінка 3</title>
+</head>
+<body>
+  <h1>Це сторінка 3</h1>
+
+  <a href="page2.html">Сторінка 2</a>
+  <br><br>
+
+  <button onclick="history.go(-2)">Назад на 2 кроки</button>
+  <button onclick="history.back()">Назад</button>
+
+  <script>
+    document.body.insertAdjacentHTML("beforeend", "<p>Кількість записів в історії: " + history.length + "</p>");
+  </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Інформація про браузер</title>
+</head>
+<body>
+  <h2>Інформація про ваш браузер:</h2>
+
+  <p id="browserName"></p>
+  <p id="browserVersion"></p>
+  <p id="browserLanguage"></p>
+
+  <script>
+    // Отримання даних з об'єкта navigator
+    const name = navigator.appName;
+    const version = navigator.appVersion;
+    const language = navigator.language;
+
+    // Виведення на сторінку
+    document.getElementById("browserName").textContent = "Назва браузера: " + name;
+    document.getElementById("browserVersion").textContent = "Версія: " + version;
+    document.getElementById("browserLanguage").textContent = "Мова: " + language;
+  </script>
+</body>
+</html>

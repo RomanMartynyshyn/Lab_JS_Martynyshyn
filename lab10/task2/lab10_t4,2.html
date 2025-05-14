@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Привітання користувача</title>
+</head>
+<body>
+    <h1 id="greeting"></h1>
+
+    <form id="nameForm" style="display: none;">
+        <label for="username">Введіть своє ім’я:</label>
+        <input type="text" id="username" required>
+        <button type="submit">Зберегти</button>
+    </form>
+
+    <script>
+        // Функція встановлення cookie на 7 днів
+        function setCookie(name, value, days = 7) {
+            const expires = new Date(Date.now() + days * 864e5).toUTCString();
+            document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
+        }
+
+        // Функція читання cookie
+        function getCookie(name) {
+            const cookies = document.cookie.split('; ');
+            for (let cookie of cookies) {
+                const [key, val] = cookie.split('=');
+                if (decodeURIComponent(key) === name) {
+                    return decodeURIComponent(val);
+                }
+            }
+            return null;
+        }
+
+        // Перевірити чи є cookie з ім'ям
+        const savedName = getCookie('username');
+        const greeting = document.getElementById('greeting');
+        const form = document.getElementById('nameForm');
+
+        if (savedName) {
+            greeting.textContent = `Привіт, ${savedName}!`;
+        } else {
+            form.style.display = 'block';
+            greeting.textContent = 'Вітаємо!';
+        }
+
+        // Обробка форми
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('username').value;
+            setCookie('username', name);
+            greeting.textContent = `Привіт, ${name}!`;
+            form.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
+

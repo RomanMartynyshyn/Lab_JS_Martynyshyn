@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color:rgb(44, 32, 32);
+            color: beige;
+        }
+    </style>
+</head>
+<body>
+    <p id="location"></p>
+    <button onclick="reload()">reload</button>
+    <button onclick="redirect()">redirect</button>
+
+    <button onclick="goBack()">Назад</button>
+    <button onclick="goForward()">Вперед</button>
+
+    <p id="historyLength"></p>
+    <table>
+        <tr>
+            <td>protocol: </td>
+            <td id="protocol"></td>
+        </tr>
+        <tr>
+            <td>host: </td>
+            <td id="host"></td>
+        </tr>
+        <tr>
+            <td>pathname: </td>
+            <td id="pathname"></td>
+        </tr>
+    </table>
+</body>
+<script>
+    //task 1 dificult: easy
+    document.getElementById("location").innerText = location.href;
+    document.getElementById("protocol").innerHTML = location.protocol;
+    document.getElementById("host").innerHTML = location.host;
+    document.getElementById("pathname").innerHTML = location.pathname;
+
+    function reload(){
+        location.reload();
+    }
+
+    //task 1, dificult: medium.
+    function redirect(){
+        location.assign("https://github.com/RomanMartynyshyn")
+    }
+
+    //task 1, dificult: medium 2
+//     const allowedHost = "example.com";
+//     const currentUrl = window.location;
+// if (currentUrl.host !== allowedHost) {
+//   window.location.href = "https://" + allowedHost;
+// }
+
+//task 2 dificult: easy.
+    function goBack() {
+        history.back();
+        }
+
+    function goForward() {
+        history.forward();
+    }
+
+    // Вивід кількості записів в історії
+    const historyLength = history.length;
+    document.getElementById("historyLength").textContent = 
+      "Кількість записів в історії: " + historyLength;
+
+</script>
+</html>

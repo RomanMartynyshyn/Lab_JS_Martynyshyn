@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Робота з Cookies</title>
+</head>
+<body>
+    <h1>Робота з Cookies</h1>
+
+    <form id="cookieForm">
+        <label for="name">Ім’я cookie:</label>
+        <input type="text" id="name" required>
+        <br>
+        <label for="value">Значення cookie:</label>
+        <input type="text" id="value" required>
+        <br>
+        <button type="submit">Встановити cookie</button>
+    </form>
+
+    <h2>Встановлені cookies:</h2>
+    <div id="cookieDisplay"></div>
+
+    <script>
+        // Функція для встановлення cookie
+        function setCookie(name, value, days = 7) {
+            const expires = new Date(Date.now() + days * 864e5).toUTCString();
+            document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
+        }
+
+        // Функція для виводу всіх cookie
+        function displayCookies() {
+            const cookieDiv = document.getElementById('cookieDisplay');
+            if (document.cookie) {
+                const cookies = document.cookie.split('; ').map(c => `<li>${c}</li>`).join('');
+                cookieDiv.innerHTML = `<ul>${cookies}</ul>`;
+            } else {
+                cookieDiv.textContent = 'Немає встановлених cookies.';
+            }
+        }
+
+        // Обробник форми
+        document.getElementById('cookieForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const value = document.getElementById('value').value;
+            setCookie(name, value);
+            displayCookies();
+            this.reset();
+        });
+
+        // Вивести cookies при завантаженні сторінки
+        window.onload = displayCookies;
+    </script>
+</body>
+</html>
