@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>AJAX з обробкою помилки</title>
+  <style>
+    #message {
+      margin-top: 20px;
+      font-weight: bold;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Перевірка обробки помилки</h1>
+  <button id="sendRequestBtn">Надіслати запит</button>
+  <div id="message"></div>
+
+  <script>
+    document.getElementById('sendRequestBtn').addEventListener('click', function () {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', 'nonexistent-file.json', true); // Файл не існує
+
+      xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          document.getElementById('message').textContent = 'Запит успішно виконано.';
+        } else {
+          document.getElementById('message').textContent = `Помилка: статус ${xhr.status} – файл не знайдено або недоступний.`;
+        }
+      };
+
+      xhr.onerror = function () {
+        document.getElementById('message').textContent = 'Помилка з’єднання або неправильна URL-адреса.';
+      };
+
+      xhr.send();
+    });
+  </script>
+
+</body>
+</html>

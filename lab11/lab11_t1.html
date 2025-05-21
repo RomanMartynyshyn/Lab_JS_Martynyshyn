@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Отримати випадковий жарт</title>
+  <style>
+  </style>
+</head>
+<body>
+
+  <h1>Отримай випадковий жарт</h1>
+  <button id="getJokeBtn">Показати жарт</button>
+  <div id="joke"></div>
+
+  <script>
+    document.getElementById('getJokeBtn').addEventListener('click', function () {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', 'https://official-joke-api.appspot.com/random_joke', true);
+
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          const response = JSON.parse(xhr.responseText);
+          const jokeText = `<strong>${response.setup}</strong><br>${response.punchline}`;
+          document.getElementById('joke').innerHTML = jokeText;
+        } else {
+          document.getElementById('joke').innerText = 'Не вдалося отримати жарт 😢';
+        }
+      };
+
+      xhr.onerror = function () {
+        document.getElementById('joke').innerText = 'Сталася помилка при запиті.';
+      };
+
+      xhr.send();
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Список користувачів</title>
+  <style>
+    ul {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Користувачі</h1>
+  <button id="loadBtn">Завантажити список</button>
+  <ul id="userList"></ul>
+
+  <script>
+    document.getElementById('loadBtn').addEventListener('click', function () {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', 'users.json', true);
+
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          const users = JSON.parse(xhr.responseText);
+          const list = document.getElementById('userList');
+          list.innerHTML = ''; // Очистити попередній список
+          users.forEach(function(user) {
+            const li = document.createElement('li');
+            li.textContent = user.name;
+            list.appendChild(li);
+          });
+        } else {
+          alert('Не вдалося завантажити список користувачів.');
+        }
+      };
+
+      xhr.onerror = function () {
+        alert('Сталася помилка при завантаженні файлу.');
+      };
+
+      xhr.send();
+    });
+  </script>
+
+</body>
+</html>

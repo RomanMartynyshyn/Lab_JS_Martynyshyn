@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>AJAX Форма</title>
+</head>
+<body>
+
+  <h1>Введіть своє ім’я</h1>
+  <form id="nameForm">
+    <input type="text" id="nameInput" placeholder="Ваше ім’я" required>
+    <button type="submit">Відправити</button>
+  </form>
+
+  <div id="result">Відповідь з сервера зʼявиться тут</div>
+
+  <script>
+    document.getElementById('nameForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Зупиняє перезавантаження
+
+      const name = document.getElementById('nameInput').value;
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', 'response.json', true); // Імітація відповіді
+
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          const response = JSON.parse(xhr.responseText);
+          document.getElementById('result').textContent = `${response.greeting}, ${name}!`;
+        } else {
+          document.getElementById('result').textContent = 'Помилка отримання відповіді.';
+        }
+      };
+
+      xhr.onerror = function() {
+        document.getElementById('result').textContent = 'Сталася помилка з’єднання.';
+      };
+
+      xhr.send();
+    });
+  </script>
+
+</body>
+</html>
